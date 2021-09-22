@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: yy-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_SERVERADDR:http://localhost:8848}
+      config:
+        server-addr: ${NACOS_SERVERADDR:http://localhost:8848}
+        file-extension: yaml
