@@ -1,7 +1,7 @@
 package com.yy.ds.gateway.sso;
 
 import com.alibaba.fastjson.JSONObject;
-import com.yy.ds.gateway.common.CommonResult;
+import com.yy.ds.common.api.CommonResult;
 import com.yy.ds.gateway.feign.SystemFeignClient;
 
 import org.springframework.beans.factory.annotation.Autowired;
