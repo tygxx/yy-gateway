@@ -2,7 +2,7 @@ package com.yy.ds.gateway.sso;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yy.ds.gateway.common.CommonResult;
-import com.yy.ds.gateway.feign.SystemService;
+import com.yy.ds.gateway.feign.SystemFeignClient;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,11 +19,11 @@ import io.swagger.annotations.ApiOperation;
 public class SsoController {
 
     @Autowired
-    private SystemService systemService;
+    private SystemFeignClient systemFeignClient;
 
     @ApiOperation(value = "测试")
     @GetMapping("{id}")
     public CommonResult<JSONObject> findOne(@PathVariable Long id) {
-        return systemService.getUserById(id);
+        return systemFeignClient.getUserById(id);
     }
 }
