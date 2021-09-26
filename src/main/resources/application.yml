@@ -25,6 +25,25 @@ spring:
     #         - Path=/system/**
     #       filters:
     #         - StripPrefix=1
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${JWT_URI:http://localhost:20005/rsa/publicKey} #配置RSA的公钥访问地址
+  redis:
+    database: ${REDIS_DATABASE:0}
+    port: ${REDIS_PORT:6379}
+    host: ${REDIS_HOST:localhost}
+    # password: ${REDIS_PASSWORD:eversec123!@#}
+    timeout: 3000ms # 连接超时时间（毫秒）
+    lettuce: # SpringBoot2.0默认采用Lettuce客户端来连接Redis服务端的
+      pool:
+        max-idle: 8 # 连接池中的最大空闲连接 
+        min-idle: 0 # 连接池中的最小空闲连接
+        max-active: 8 # 连接池最大连接数（使用负值表示没有限制）
+        max-wait: -1  # 连接池最大阻塞等待时间（使用负值表示没有限制）
+
 secure:
   ignore:
     urls: #配置白名单路径
@@ -38,9 +57,17 @@ secure:
       - "/**/*.ico"
       - "/webjars/springfox-swagger-ui/**"
       - "/actuator/**"
+      - "/sso/**"
+    #   - "/auth/oauth/token"
+    #   - "/auth/rsa/publicKey"
       - "/system/minio/upload" # system服务相关
 
 feign:
+  client:
+    config:
+      default:
+        connect-timeout: 20000
+        read-timeout: 120000
   httpclient:
     enabled: false # 关闭 feign 对 httpclient 的使用并开启 okhttp
   okhttp:
@@ -50,3 +77,6 @@ logging:
   level:
     root: info
     com.yy.ds.gateway: debug
+
+jks:
+  secret: 123!@# # 认证中心制作jks证书时，指定的密码

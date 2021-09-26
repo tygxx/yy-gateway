@@ -15,8 +15,8 @@
         <java.version>8</java.version>
     </properties>
     <dependencies>
-         <!-- common模块 -->
-         <dependency>
+        <!-- common模块 -->
+        <dependency>
             <groupId>com.yy.ds</groupId>
             <artifactId>yy-common</artifactId>
             <version>1.0.0-SNAPSHOT</version>
@@ -28,12 +28,39 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- redis模块 -->
+        <dependency>
+            <groupId>com.yy.ds</groupId>
+            <artifactId>yy-redis</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
         <!-- springCloud网关 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
-
+        <!-- spring安全框架相关 -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-resource-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-jose</artifactId>
+        </dependency>
+        <!-- JWT 使用 nimbus-jose-jwt 进行解码 -->
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+        </dependency>
         <!-- test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

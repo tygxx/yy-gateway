@@ -21,13 +21,17 @@ import okhttp3.OkHttpClient;
 @AutoConfigureBefore(FeignAutoConfiguration.class)
 public class OkHttpConfig {
 
+    /**
+     * 这里是对okhttp的配置，不是feign的配置，feign的超时机制可以在配置文件中配置
+     * @return
+     */
     @Bean
     public OkHttpClient okHttpClient() {
         return new OkHttpClient.Builder()
                 // 设置连接超时
                 .connectTimeout(60, TimeUnit.SECONDS)
                 // 设置读超时
-                .readTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(120, TimeUnit.SECONDS)
                 // 设置写超时
                 .writeTimeout(120, TimeUnit.SECONDS)
                 // 是否自动重连
